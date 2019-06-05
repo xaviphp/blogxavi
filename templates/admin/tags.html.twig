@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style type="text/css">
+        body {
+        }
+        table{
+            width: 300px;
+            margin-left: 50px;
+        }
+        td{
+            border-bottom: 1px solid grey;
+            padding:5px;
+        }
+        #new{
+            margin-left: 50px;
+            margin-bottom: 50px;
+        }
+        .bg-dark{
+            color:white;
+        }
+
+    </style>
+{% endblock %}
+{% block body %}
+    {% if is_granted("ROLE_ADMIN") %}
+        <div id="new">
+            <h1>Tags Administration</h1>
+            <a class="btn btn-success" href="{{ path('app_new_tag')}}">New Tag</a>
+        </div>
+
+        <table>
+            <tr class="bg-dark">
+                <td>Tag Name<td>
+                <td colspan="2"></td>
+
+            </tr>
+            {% for tag in tags %}
+                <tr>
+                    <td> {{ tag.tag }}</td>
+                    <td colspan="2"><a class="btn btn-secondary " href="{{ path('app_edit_tag',{'id':tag.id} )}}">Edit</a></td>
+                    <td colspan="2"><a class="btn btn-danger " href="{{ path('app_tag_delete',{'id':tag.id} )}}" onclick="return confirm('¿Esta seguro que desea eliminar este tag?')">X</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+{% endblock %}

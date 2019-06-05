@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% block error %}{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style type="text/css">
+        body {
+        }
+        form                                                                                                                                                    {
+            background-color:#C9C9C9;
+            padding: 20px;
+        }
+        input{
+            margin-bottom:20px;
+        }
+        label{
+
+        }
+    </style>
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="col-lg-10 box-form">
+            <h1>{{ title }} Tag</h1>
+            <div class="col-lg-8 box-form">
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                {{ form_errors(form) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
